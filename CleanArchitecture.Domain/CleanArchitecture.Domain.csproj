@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Accounts\Entities\" />
+    <Folder Include="Accounts\ValueObjects\" />
+    <Folder Include="Backoffice\" />
+    <Folder Include="Shared\Entities\" />
+    <Folder Include="Shared\ValueObjects\" />
+    <Folder Include="Store\" />
+    <Folder Include="Player\" />
+  </ItemGroup>
+
+</Project>
