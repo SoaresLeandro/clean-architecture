@@ -7,10 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Accounts\Entities\" />
     <Folder Include="Accounts\ValueObjects\" />
     <Folder Include="Backoffice\" />
-    <Folder Include="Shared\Entities\" />
     <Folder Include="Shared\ValueObjects\" />
     <Folder Include="Store\" />
     <Folder Include="Player\" />

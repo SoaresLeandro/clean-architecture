@@ -5,7 +5,7 @@ namespace CleanArchitecture.Domain.Accounts.Entities
     public class Student : Entity
     {
         #region Constructors
-        public Student(Guid? id) : base(id)
+        public Student() : base(Guid.CreateVersion7())
         {
         }
         #endregion
