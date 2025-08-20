@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Domain.Accounts.ValueObjects;
+using System.Security.Cryptography;
 
 namespace CleanArchitecture.Domain.Test.Accounts.ValueObjects
 {
@@ -15,17 +16,26 @@ namespace CleanArchitecture.Domain.Test.Accounts.ValueObjects
         [Fact]
         public void ShouldImplictConvertToStringMethod()
         {
-            string data = _name;
+            var name = _name;
 
-            Assert.Equal("FirstName LastName", data);
+            Assert.Equal("FirstName LastName", name);
         }
 
         [Fact]
-        public void ShouldReturnSucessAtCreateName()
+        public void ShouldReturnSucessWhenCreatingAName()
         {
-            string data = Name.Create("First Name", "LastName");
+            var name = Name.Create("FirstName", "LastName");
 
-            Assert.Equal("FirstName LastName", data);
+            Assert.Equal("FirstName LastName", name);
+        }
+
+        [Fact]
+        public void ShouldReturnErrorIfFirstNameIsNotValid()
+        { 
+            Assert.Throws<Exception>(() =>
+            {
+                var name = Name.Create("F", "LastName");
+            });
         }
     }
 }
