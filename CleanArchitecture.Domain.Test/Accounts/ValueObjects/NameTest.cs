@@ -19,5 +19,13 @@ namespace CleanArchitecture.Domain.Test.Accounts.ValueObjects
 
             Assert.Equal("FirstName LastName", data);
         }
+
+        [Fact]
+        public void ShouldReturnSucessAtCreateName()
+        {
+            string data = Name.Create("First Name", "LastName");
+
+            Assert.Equal("FirstName LastName", data);
+        }
     }
 }

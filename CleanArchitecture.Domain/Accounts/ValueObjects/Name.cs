@@ -4,6 +4,11 @@ namespace CleanArchitecture.Domain.Accounts.ValueObjects
 {
     public sealed record Name : ValueObject
     {
+        #region Constants
+        public const int MinLength = 3;
+        public const int MaxLength = 60;
+        #endregion
+
         #region Constructors
         private Name(string firstName, string lastName)
         {
@@ -29,7 +34,19 @@ namespace CleanArchitecture.Domain.Accounts.ValueObjects
         public static Name Create(string firstName, string lastName)
         {
             if(string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
-                throw new ArgumentException("Nome inválido");
+                throw new ArgumentException("Name cannot be empty");
+
+            if (firstName.Length < MinLength)
+                throw new Exception("First Name cannot be less than 3 characters");
+
+            if (firstName.Length > MaxLength)
+                throw new Exception("First Name cannot be longer than 60 characters");
+
+            if (lastName.Length < MinLength)
+                throw new Exception("Last Name cannot be less than 3 characters");
+
+            if (lastName.Length > MaxLength)
+                throw new Exception("Last Name cannot be longer than 60 characters");
 
             return new Name(firstName, lastName);
         }
