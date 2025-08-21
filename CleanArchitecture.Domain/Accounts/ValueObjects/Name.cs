@@ -1,4 +1,5 @@
-﻿using CleanArchitecture.Domain.Shared.ValueObjects;
+﻿using CleanArchitecture.Domain.Accounts.ValueObjects.Exceptions;
+using CleanArchitecture.Domain.Shared.ValueObjects;
 
 namespace CleanArchitecture.Domain.Accounts.ValueObjects
 {
@@ -34,19 +35,19 @@ namespace CleanArchitecture.Domain.Accounts.ValueObjects
         public static Name Create(string firstName, string lastName)
         {
             if(string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
-                throw new ArgumentException("Name cannot be empty");
+                throw new InvalidFirstNameLenghtException("Name cannot be empty");
 
             if (firstName.Length < MinLength)
-                throw new Exception("First Name cannot be less than 3 characters");
+                throw new InvalidFirstNameLenghtException("First Name cannot be less than 3 characters");
 
             if (firstName.Length > MaxLength)
-                throw new Exception("First Name cannot be longer than 60 characters");
+                throw new InvalidFirstNameLenghtException("First Name cannot be longer than 60 characters");
 
             if (lastName.Length < MinLength)
-                throw new Exception("Last Name cannot be less than 3 characters");
+                throw new InvalidLastNameLenghtException("Last Name cannot be less than 3 characters");
 
             if (lastName.Length > MaxLength)
-                throw new Exception("Last Name cannot be longer than 60 characters");
+                throw new InvalidLastNameLenghtException("Last Name cannot be longer than 60 characters");
 
             return new Name(firstName, lastName);
         }

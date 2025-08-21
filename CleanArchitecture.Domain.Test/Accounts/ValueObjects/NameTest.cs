@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Domain.Accounts.ValueObjects;
+using CleanArchitecture.Domain.Accounts.ValueObjects.Exceptions;
 using System.Security.Cryptography;
 
 namespace CleanArchitecture.Domain.Test.Accounts.ValueObjects
@@ -32,9 +33,18 @@ namespace CleanArchitecture.Domain.Test.Accounts.ValueObjects
         [Fact]
         public void ShouldReturnErrorIfFirstNameIsNotValid()
         { 
-            Assert.Throws<Exception>(() =>
+            Assert.Throws<InvalidFirstNameLenghtException>(() =>
             {
                 var name = Name.Create("F", "LastName");
+            });
+        }
+
+        [Fact]
+        public void ShouldReturnErrorIfLastNameIsNotValid()
+        {
+            Assert.Throws<InvalidLastNameLenghtException>(() =>
+            {
+                var name = Name.Create("FirstName", "L");
             });
         }
     }
