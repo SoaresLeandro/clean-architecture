@@ -35,7 +35,7 @@ namespace CleanArchitecture.Domain.Accounts.ValueObjects
         public static Name Create(string firstName, string lastName)
         {
             if(string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
-                throw new InvalidFirstNameLenghtException("Name cannot be empty");
+                throw new InvalidNameException("Name cannot be empty");
 
             if (firstName.Length < MinLength)
                 throw new InvalidFirstNameLenghtException("First Name cannot be less than 3 characters");

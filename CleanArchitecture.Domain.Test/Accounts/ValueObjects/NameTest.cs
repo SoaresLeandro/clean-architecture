@@ -47,5 +47,14 @@ namespace CleanArchitecture.Domain.Test.Accounts.ValueObjects
                 var name = Name.Create("FirstName", "L");
             });
         }
+
+        [Fact]
+        public void ShouldReturnErrorIfNameIsNotValid()
+        {
+            Assert.Throws<InvalidNameException>(() =>
+            {
+                var name = Name.Create("F", "L");
+            });
+        }
     }
 }
