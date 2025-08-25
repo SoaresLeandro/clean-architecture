@@ -34,7 +34,10 @@ namespace CleanArchitecture.Domain.Accounts.ValueObjects
         #region Factories
         public static Name Create(string firstName, string lastName)
         {
-            if(string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
+            if((string.IsNullOrWhiteSpace(firstName) && 
+               string.IsNullOrWhiteSpace(lastName)) ||
+               (firstName.Length < MinLength &&
+               lastName.Length < MinLength))
                 throw new InvalidNameException("Name cannot be empty");
 
             if (firstName.Length < MinLength)
