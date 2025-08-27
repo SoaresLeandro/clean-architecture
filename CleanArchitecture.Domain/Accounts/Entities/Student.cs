@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Domain.Accounts.ValueObjects;
+using CleanArchitecture.Domain.Shared.Abstractions;
 using CleanArchitecture.Domain.Shared.Entities;
 
 namespace CleanArchitecture.Domain.Accounts.Entities
@@ -9,19 +10,19 @@ namespace CleanArchitecture.Domain.Accounts.Entities
         public Student(
             string firstName, 
             string lastName, 
-            string email, 
-            string password) : base(Guid.CreateVersion7())
+            string email,
+            IDateTimeProvider dateTimeProvider) : base(Guid.CreateVersion7())
         {
             Name = Name.Create(firstName, lastName);
-            Email = email;
-            Password = password;
+            Email = Email.Create(email);
+            Tracker = Tracker.Create(dateTimeProvider);
         }
         #endregion
 
         #region Properties
-        public Name Name { get; set; }
-        public string Email { get; } = string.Empty;
-        public string Password { get; } = string.Empty;
+        public Name Name { get; }
+        public Email Email { get; }
+        public Tracker Tracker { get; }
         #endregion
     }
 }
