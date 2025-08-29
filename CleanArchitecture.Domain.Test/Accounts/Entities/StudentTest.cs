@@ -10,6 +10,6 @@ public class StudentTest
     [Fact]
     public void Test1()
     {
-        var student = new Student("Leandro", "Soares", "email@dominio.com", _dateTimeProvider);
+        var student = Student.Create("Leandro", "Soares", "email@dominio.com", _dateTimeProvider);
     }
 }
