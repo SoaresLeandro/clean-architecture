@@ -12,4 +12,8 @@
     <Folder Include="Player\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR.Contracts" />
+  </ItemGroup>
+
 </Project>
