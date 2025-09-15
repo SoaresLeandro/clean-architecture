@@ -1,4 +1,5 @@
-﻿using CleanArchitecture.Domain.Accounts.ValueObjects;
+﻿using CleanArchitecture.Domain.Accounts.Events;
+using CleanArchitecture.Domain.Accounts.ValueObjects;
 using CleanArchitecture.Domain.Shared.Abstractions;
 using CleanArchitecture.Domain.Shared.Entities;
 
@@ -38,14 +39,28 @@ namespace CleanArchitecture.Domain.Accounts.Entities
         #region Factories
         public static Student Create(
             string firstName,
-            string lastName, 
-            string email, 
-            IDateTimeProvider dateTimeProvider) => new Student(firstName, lastName, email, dateTimeProvider);
+            string lastName,
+            string email,
+            IDateTimeProvider dateTimeProvider)
+        {
+            var student = new Student(firstName, lastName, email, dateTimeProvider);
+
+            student.RaiseEvent(new OnStudentCreatedEvent(student.Id, student.Name, student.Email.ToString()));
+
+            return student;
+        }
 
         public static Student Create(
-            Name name, 
-            Email email, 
-            IDateTimeProvider dateTimeProvider) => new Student(name, email, dateTimeProvider);
+            Name name,
+            Email email,
+            IDateTimeProvider dateTimeProvider)
+        {
+            var student = new Student(name, email, dateTimeProvider);
+
+            student.RaiseEvent(new OnStudentCreatedEvent(student.Id, student.Name, student.Email.ToString()));
+
+            return student;
+        }
         #endregion
 
         #region Overrides

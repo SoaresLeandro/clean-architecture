@@ -7,9 +7,12 @@ namespace CleanArchitecture.Domain.Test.Accounts.Entities;
 public class StudentTest
 {
     private readonly IDateTimeProvider _dateTimeProvider = new FakeDateTimeProvider();
+
     [Fact]
-    public void Test1()
+    public void ShouldRaiseOnStudentCreatedEvent()
     {
         var student = Student.Create("Leandro", "Soares", "email@dominio.com", _dateTimeProvider);
+
+        Assert.Single(student.Events);
     }
 }
