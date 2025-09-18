@@ -1,11 +1,12 @@
 ﻿using CleanArchitecture.Domain.Accounts.Events;
 using CleanArchitecture.Domain.Accounts.ValueObjects;
 using CleanArchitecture.Domain.Shared.Abstractions;
+using CleanArchitecture.Domain.Shared.Aggregates.Abstractions;
 using CleanArchitecture.Domain.Shared.Entities;
 
 namespace CleanArchitecture.Domain.Accounts.Entities
 {
-    public class Student : Entity
+    public class Student : Entity, IAggregateRoot
     {
         #region Constructors
         private Student(
